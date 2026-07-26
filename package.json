@@ -1,6 +1,6 @@
 {
   "name": "paperflow-studio",
-  "version": "0.1.0-beta.0",
+  "version": "0.1.1-beta.0",
   "private": true,
   "type": "module",
   "description": "纸舟 Studio — 本地优先的可视化 PDF 模板与批量生成应用",

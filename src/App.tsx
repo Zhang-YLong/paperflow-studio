@@ -20,7 +20,7 @@ const navItems: { id: PageId; label: string; eyebrow: string }[] = [
   { id: 'home', label: '工作台', eyebrow: '01' },
   { id: 'designer', label: '模板设计', eyebrow: '02' },
   { id: 'batch', label: '批量生成', eyebrow: '03' },
-  { id: 'business', label: '商业化路线', eyebrow: '04' },
+  { id: 'about', label: '关于纸舟', eyebrow: '04' },
 ];
 
 const Icon = ({ name }: { name: 'arrow' | 'spark' | 'shield' | 'download' }) => {
@@ -130,12 +130,12 @@ const HomePage = ({
         <span className="metric-label">数据上传</span>
       </div>
       <div>
-        <span className="metric-value">MIT</span>
-        <span className="metric-label">核心许可</span>
+        <span className="metric-value">CSV</span>
+        <span className="metric-label">数据导入</span>
       </div>
       <div>
-        <span className="metric-value">∞</span>
-        <span className="metric-label">批量页数</span>
+        <span className="metric-value">PDF</span>
+        <span className="metric-label">输出格式</span>
       </div>
     </section>
 
@@ -178,7 +178,7 @@ const HomePage = ({
         <span className="kicker">PRIVACY BY DESIGN</span>
         <h3>客户名单、报价与证书姓名，不必经过第三方服务器。</h3>
       </div>
-      <p>纸舟 Studio 在浏览器本地完成模板编辑和 PDF 生成。未来上线团队云服务时，可把“本地版”保留为可信的免费入口。</p>
+      <p>当前版本没有登录、埋点或云端接口。模板可以导出为 JSON 备份，生成的 PDF 由浏览器直接保存到本机。</p>
     </section>
   </main>
 );
@@ -429,63 +429,43 @@ const BatchPage = ({
   );
 };
 
-const BusinessPage = () => (
-  <main className="page business-page">
-    <section className="business-hero">
-      <span className="kicker">FROM OPEN SOURCE TO BUSINESS</span>
-      <h2>先卖价值，再卖规模。</h2>
-      <p>
-        免费本地版负责建立信任，专业模板与批量能力验证付费意愿；再逐步增加团队协作、云端 API 和企业交付。
-      </p>
+const AboutPage = () => (
+  <main className="page about-page">
+    <section className="about-hero">
+      <span className="kicker">A SMALL TOOL, BUILT WITH CARE</span>
+      <h2>纸舟是我想长期打磨的一件小工具。</h2>
+      <p>它从一个很具体的问题开始：同一类文档明明只换了几项数据，却总要重新排版、复制和检查。</p>
     </section>
-    <section className="revenue-grid">
-      {[
-        ['01', '专业模板包', '¥39–199 / 套', '按行业出售报价单、证书、物流标签、检测报告模板。交付快，最适合第一笔收入。'],
-        ['02', '个人专业版', '¥199–399 / 年', '提供 Excel 导入、批量拆分、品牌资产库、历史版本和无水印商业模板。'],
-        ['03', '团队云服务', '¥49–199 / 人/月', '加入成员权限、模板审批、云端数据源、审计记录和自动发送。'],
-        ['04', '企业实施', '¥5,000 起 / 项目', '为培训、电商、制造和咨询公司定制文档流程、私有部署与系统集成。'],
-      ].map(([number, title, price, text]) => (
-        <article className="revenue-card" key={number}>
-          <span>{number}</span>
-          <h3>{title}</h3>
-          <strong>{price}</strong>
-          <p>{text}</p>
-        </article>
-      ))}
-    </section>
-    <section className="launch-plan">
-      <div>
-        <span className="kicker dark">30-DAY LAUNCH</span>
-        <h3>第一轮验证，不需要先做大而全。</h3>
-      </div>
-      <ol>
-        <li>
-          <span>第 1 周</span>
-          选定一个垂直人群，访谈 10 位真实用户，确认他们每周重复制作的文档。
-        </li>
-        <li>
-          <span>第 2 周</span>
-          制作 10 套高质量行业模板，录制 60 秒演示，建立公开落地页。
-        </li>
-        <li>
-          <span>第 3 周</span>
-          通过小红书、视频号、知乎或行业社群发布案例，首批采用一次性买断。
-        </li>
-        <li>
-          <span>第 4 周</span>
-          根据付费反馈决定做“更多模板”还是“云协作”，不凭想象堆功能。
-        </li>
-      </ol>
-    </section>
-    <section className="license-card">
-      <Icon name="shield" />
-      <div>
-        <span className="kicker dark">LICENSE SAFE START</span>
-        <h3>MIT 底座允许商业使用，但发行物必须保留许可声明。</h3>
+    <section className="about-grid">
+      <article className="about-card">
+        <span>01 / 我在意的事</span>
+        <h3>先把本地体验做好</h3>
         <p>
-          当前应用使用独立品牌“纸舟 Studio”，并在交付包内保留 pdfme 的 MIT 版权声明与字体许可。正式上线前仍应完成商标检索、隐私政策、服务条款和本地经营资质核查。
+          纸舟不要求注册账号。模板编辑、CSV 解析和 PDF 生成都在浏览器里完成，重要模板也可以随时导出备份。
         </p>
+      </article>
+      <article className="about-card">
+        <span>02 / 当前版本</span>
+        <h3>够用、清楚、可继续改</h3>
+        <p>
+          现在提供三套中文模板、可视化设计器和批量生成流程。项目还在早期，我会优先修复真实使用中遇到的问题。
+        </p>
+      </article>
+    </section>
+    <section className="about-note">
+      <div>
+        <span className="kicker">MADE BY ZHANG-YLONG</span>
+        <h3>如果你也在处理重复文档，欢迎告诉我你的使用场景。</h3>
+        <p>一个能复现的问题，或者一份脱敏后的模板示例，都比泛泛的功能清单更有帮助。</p>
       </div>
+      <a
+        className="about-link"
+        href="https://github.com/Zhang-YLong/paperflow-studio/issues"
+        target="_blank"
+        rel="noreferrer"
+      >
+        在 GitHub 留言 <Icon name="arrow" />
+      </a>
     </section>
   </main>
 );
@@ -567,7 +547,7 @@ export default function App() {
         </nav>
         <div className="sidebar-footer">
           <button onClick={resetAll}>恢复内置模板</button>
-          <span>v0.1 · LOCAL MVP</span>
+          <span>v0.1 · PUBLIC BETA</span>
         </div>
       </aside>
       <div className="app-content">
@@ -586,7 +566,7 @@ export default function App() {
             notify={notify}
           />
         )}
-        {page === 'business' && <BusinessPage />}
+        {page === 'about' && <AboutPage />}
       </div>
       <Toast state={toast} />
     </div>

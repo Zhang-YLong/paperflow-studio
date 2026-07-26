@@ -1,6 +1,6 @@
 import type { Template } from '@pdfme/common';
 
-export type PageId = 'home' | 'designer' | 'batch' | 'business';
+export type PageId = 'home' | 'designer' | 'batch' | 'about';
 
 export type TemplateProject = {
   id: string;
