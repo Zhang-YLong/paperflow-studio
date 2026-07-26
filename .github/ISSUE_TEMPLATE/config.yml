@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 在线体验
+    url: https://zhang-ylong.github.io/paperflow-studio/
+    about: 先在浏览器里走一遍模板设计和批量生成流程
+  - name: 使用讨论
+    url: https://github.com/Zhang-YLong/paperflow-studio/discussions
+    about: 分享你的文档场景、模板想法或使用经验

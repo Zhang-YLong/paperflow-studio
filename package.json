@@ -1,9 +1,9 @@
 {
   "name": "paperflow-studio",
-  "version": "0.1.1-beta.0",
+  "version": "0.1.2-beta.0",
   "private": true,
   "type": "module",
-  "description": "纸舟 Studio — 本地优先的可视化 PDF 模板与批量生成应用",
+  "description": "纸舟 Studio — 设计中文 PDF 模板，导入 CSV，一次生成整批文档",
   "license": "MIT",
   "author": "Zhang-YLong",
   "repository": {
@@ -18,6 +18,7 @@
     "pdf",
     "document-automation",
     "pdf-generator",
+    "csv-to-pdf",
     "template-designer",
     "local-first",
     "react",

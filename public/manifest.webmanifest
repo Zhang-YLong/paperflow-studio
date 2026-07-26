@@ -1,11 +1,36 @@
 {
   "name": "纸舟 Studio",
   "short_name": "纸舟",
-  "description": "本地优先的可视化 PDF 模板与批量生成应用",
+  "description": "设计中文 PDF 模板，导入 CSV，一次生成整批文档。",
+  "id": "./",
   "start_url": "./",
+  "scope": "./",
+  "lang": "zh-CN",
   "display": "standalone",
   "background_color": "#f3f0e8",
   "theme_color": "#171914",
+  "categories": ["productivity", "utilities"],
+  "shortcuts": [
+    {
+      "name": "模板设计",
+      "short_name": "设计",
+      "url": "./?page=designer"
+    },
+    {
+      "name": "批量生成",
+      "short_name": "生成",
+      "url": "./?page=batch"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "./social-preview.png",
+      "sizes": "1280x640",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "纸舟 Studio 工作台"
+    }
+  ],
   "icons": [
     {
       "src": "./icons/paperflow.svg",

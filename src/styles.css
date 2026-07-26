@@ -217,7 +217,14 @@ select:focus-visible {
   font-weight: 600;
 }
 
-.privacy-pill {
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.privacy-pill,
+.repo-pill {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -226,6 +233,31 @@ select:focus-visible {
   border-radius: 999px;
   color: #5f6158;
   font-size: 11px;
+}
+
+.repo-pill {
+  border-color: var(--ink);
+  color: #fff;
+  text-decoration: none;
+  background: var(--ink);
+  transition:
+    color 150ms ease,
+    background 150ms ease;
+}
+
+.repo-pill:hover {
+  color: var(--ink);
+  background: var(--lime);
+}
+
+.repo-pill svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .privacy-dot {
@@ -291,6 +323,22 @@ select:focus-visible {
   display: flex;
   gap: 12px;
   margin-top: 36px;
+}
+
+.hero-proof {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin-top: 22px;
+  color: #8f9187;
+  font-size: 9px;
+  letter-spacing: 0.04em;
+}
+
+.hero-proof span::before {
+  margin-right: 7px;
+  color: var(--lime);
+  content: '✓';
 }
 
 .button {
@@ -471,7 +519,8 @@ select:focus-visible {
   font-size: 10px;
 }
 
-.section-block {
+.section-block,
+.workflow-block {
   padding-top: 70px;
 }
 
@@ -506,6 +555,77 @@ select:focus-visible {
   font-weight: 600;
   background: transparent;
   cursor: pointer;
+}
+
+.section-summary {
+  max-width: 360px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.8;
+  text-align: right;
+}
+
+.workflow-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  margin-top: 30px;
+  border: 1px solid var(--line);
+  background: var(--line);
+}
+
+.workflow-grid button {
+  position: relative;
+  min-height: 235px;
+  padding: 28px;
+  border: 0;
+  text-align: left;
+  background: #faf8f2;
+  cursor: pointer;
+  transition:
+    color 160ms ease,
+    background 160ms ease;
+}
+
+.workflow-grid button:hover {
+  color: #fff;
+  background: var(--ink);
+}
+
+.workflow-grid button > span {
+  color: #92938a;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+}
+
+.workflow-grid h4 {
+  margin: 48px 0 12px;
+  font-size: 23px;
+  font-weight: 600;
+}
+
+.workflow-grid p {
+  max-width: 300px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.8;
+}
+
+.workflow-grid button:hover p {
+  color: #aeb0a7;
+}
+
+.workflow-grid svg {
+  position: absolute;
+  top: 27px;
+  right: 27px;
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
 }
 
 .template-grid {
@@ -666,6 +786,53 @@ select:focus-visible {
   color: #aeb0a7;
   font-size: 12px;
   line-height: 1.8;
+}
+
+.star-callout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 36px;
+  margin-top: 18px;
+  padding: 38px 40px;
+  border: 1px solid var(--line);
+  background: #faf8f2;
+}
+
+.star-callout h3 {
+  max-width: 740px;
+  margin: 9px 0 8px;
+  font-size: clamp(22px, 2.5vw, 32px);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+}
+
+.star-callout p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.8;
+}
+
+.star-callout a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+  color: var(--ink);
+  font-size: 11px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  background: var(--lime);
+}
+
+.star-callout a svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
 }
 
 .designer-page,
@@ -979,6 +1146,18 @@ select:focus-visible {
   width: 16px;
 }
 
+.about-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.about-link-quiet {
+  border: 1px solid #4f5248;
+  color: #fff;
+  background: transparent;
+}
+
 .toast {
   position: fixed;
   right: 28px;
@@ -1108,6 +1287,14 @@ select:focus-visible {
     grid-template-columns: 1fr;
   }
 
+  .workflow-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .workflow-grid button {
+    min-height: 210px;
+  }
+
   .local-callout {
     grid-template-columns: 54px 1fr;
   }
@@ -1129,6 +1316,11 @@ select:focus-visible {
   .about-card {
     min-height: auto;
   }
+
+  .star-callout {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
 }
 
 @media (max-width: 560px) {
@@ -1148,9 +1340,22 @@ select:focus-visible {
     min-height: 70px;
   }
 
-  .privacy-pill {
+  .privacy-pill,
+  .repo-pill {
     padding: 7px 9px;
     font-size: 9px;
+  }
+
+  .repo-pill {
+    width: 36px;
+    overflow: hidden;
+    color: transparent;
+    white-space: nowrap;
+  }
+
+  .repo-pill svg {
+    flex: 0 0 auto;
+    color: #fff;
   }
 
   .hero {
@@ -1166,6 +1371,10 @@ select:focus-visible {
   .batch-intro {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .section-summary {
+    text-align: left;
   }
 
   .local-callout {
@@ -1196,5 +1405,14 @@ select:focus-visible {
 
   .about-note {
     padding: 28px;
+  }
+
+  .about-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .about-link {
+    justify-content: center;
   }
 }

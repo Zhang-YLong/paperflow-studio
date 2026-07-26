@@ -23,12 +23,13 @@ const navItems: { id: PageId; label: string; eyebrow: string }[] = [
   { id: 'about', label: '关于纸舟', eyebrow: '04' },
 ];
 
-const Icon = ({ name }: { name: 'arrow' | 'spark' | 'shield' | 'download' }) => {
+const Icon = ({ name }: { name: 'arrow' | 'spark' | 'shield' | 'download' | 'star' }) => {
   const paths = {
     arrow: <path d="M5 12h14m-5-5 5 5-5 5" />,
     spark: <path d="m12 3 1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3Z" />,
     shield: <path d="M12 3 5 6v5c0 4.6 2.8 8.1 7 10 4.2-1.9 7-5.4 7-10V6l-7-3Zm-3 9 2 2 4-5" />,
     download: <path d="M12 3v12m-4-4 4 4 4-4M5 20h14" />,
+    star: <path d="m12 3 2.75 5.57 6.15.9-4.45 4.33 1.05 6.12L12 17.03l-5.5 2.89 1.05-6.12L3.1 9.47l6.15-.9L12 3Z" />,
   };
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -66,9 +67,21 @@ const Topbar = ({ page }: { page: PageId }) => {
         <span className="topbar-index">{current.eyebrow} / PAPERFLOW</span>
         <h1>{current.label}</h1>
       </div>
-      <div className="privacy-pill">
-        <span className="privacy-dot" />
-        本地隐私模式
+      <div className="topbar-actions">
+        <a
+          className="repo-pill"
+          href="https://github.com/Zhang-YLong/paperflow-studio"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="在 GitHub 查看纸舟 Studio"
+        >
+          <Icon name="star" />
+          GitHub · Star
+        </a>
+        <div className="privacy-pill">
+          <span className="privacy-dot" />
+          本地隐私模式
+        </div>
       </div>
     </header>
   );
@@ -92,7 +105,7 @@ const HomePage = ({
           <br />
           变成一次设计。
         </h2>
-        <p>可视化设计模板，导入 CSV，一次生成整批 PDF。所有业务数据默认只留在这台电脑。</p>
+        <p>选一个模板，改好字段，粘贴 CSV，一次生成整批 PDF。无需登录，数据默认只留在这台电脑。</p>
         <div className="hero-actions">
           <ActionButton variant="lime" onClick={() => onNavigate('designer')}>
             开始设计 <Icon name="arrow" />
@@ -100,6 +113,11 @@ const HomePage = ({
           <ActionButton variant="ghost" onClick={() => onNavigate('batch')}>
             批量生成
           </ActionButton>
+        </div>
+        <div className="hero-proof">
+          <span>无需注册</span>
+          <span>不上传数据</span>
+          <span>中文模板开箱即用</span>
         </div>
       </div>
       <div className="hero-visual">
@@ -136,6 +154,36 @@ const HomePage = ({
       <div>
         <span className="metric-value">PDF</span>
         <span className="metric-label">输出格式</span>
+      </div>
+    </section>
+
+    <section className="workflow-block">
+      <div className="section-heading">
+        <div>
+          <span className="kicker dark">FROM DATA TO PDF</span>
+          <h3>三步完成一批文档</h3>
+        </div>
+        <p className="section-summary">先用内置模板走通一次，再慢慢改成自己的样子。</p>
+      </div>
+      <div className="workflow-grid">
+        <button onClick={() => onNavigate('designer')}>
+          <span>01</span>
+          <h4>选择模板</h4>
+          <p>从报价单、结业证书或发货标签开始，不必面对空白画布。</p>
+          <Icon name="arrow" />
+        </button>
+        <button onClick={() => onNavigate('designer')}>
+          <span>02</span>
+          <h4>调整字段</h4>
+          <p>拖拽文字、图片、表格和二维码，保存为自己的模板。</p>
+          <Icon name="arrow" />
+        </button>
+        <button onClick={() => onNavigate('batch')}>
+          <span>03</span>
+          <h4>导入并生成</h4>
+          <p>粘贴或读取 CSV，一行数据对应一页，直接下载合并 PDF。</p>
+          <Icon name="arrow" />
+        </button>
       </div>
     </section>
 
@@ -179,6 +227,22 @@ const HomePage = ({
         <h3>客户名单、报价与证书姓名，不必经过第三方服务器。</h3>
       </div>
       <p>当前版本没有登录、埋点或云端接口。模板可以导出为 JSON 备份，生成的 PDF 由浏览器直接保存到本机。</p>
+    </section>
+
+    <section className="star-callout">
+      <div>
+        <span className="kicker dark">ONE SMALL CLICK</span>
+        <h3>如果纸舟帮你少做了一次复制粘贴，欢迎留下一颗 Star。</h3>
+        <p>它会让我知道这个方向值得继续，也方便你以后回来找到这个项目。</p>
+      </div>
+      <a
+        href="https://github.com/Zhang-YLong/paperflow-studio"
+        target="_blank"
+        rel="noreferrer"
+      >
+        <Icon name="star" />
+        在 GitHub 收藏
+      </a>
     </section>
   </main>
 );
@@ -458,14 +522,24 @@ const AboutPage = () => (
         <h3>如果你也在处理重复文档，欢迎告诉我你的使用场景。</h3>
         <p>一个能复现的问题，或者一份脱敏后的模板示例，都比泛泛的功能清单更有帮助。</p>
       </div>
-      <a
-        className="about-link"
-        href="https://github.com/Zhang-YLong/paperflow-studio/issues"
-        target="_blank"
-        rel="noreferrer"
-      >
-        在 GitHub 留言 <Icon name="arrow" />
-      </a>
+      <div className="about-actions">
+        <a
+          className="about-link"
+          href="https://github.com/Zhang-YLong/paperflow-studio/issues"
+          target="_blank"
+          rel="noreferrer"
+        >
+          提交反馈 <Icon name="arrow" />
+        </a>
+        <a
+          className="about-link about-link-quiet"
+          href="https://github.com/Zhang-YLong/paperflow-studio"
+          target="_blank"
+          rel="noreferrer"
+        >
+          给个 Star <Icon name="star" />
+        </a>
+      </div>
     </section>
   </main>
 );
@@ -547,7 +621,7 @@ export default function App() {
         </nav>
         <div className="sidebar-footer">
           <button onClick={resetAll}>恢复内置模板</button>
-          <span>v0.1 · PUBLIC BETA</span>
+          <span>v0.1.2 · PUBLIC BETA</span>
         </div>
       </aside>
       <div className="app-content">
