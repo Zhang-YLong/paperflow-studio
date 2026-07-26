@@ -1,0 +1,17 @@
+{
+  "name": "纸舟 Studio",
+  "short_name": "纸舟",
+  "description": "本地优先的可视化 PDF 模板与批量生成应用",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f3f0e8",
+  "theme_color": "#171914",
+  "icons": [
+    {
+      "src": "./icons/paperflow.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
